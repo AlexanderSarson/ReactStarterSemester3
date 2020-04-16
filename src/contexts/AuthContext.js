@@ -6,7 +6,7 @@ const initialState = {
   isAdmin: false,
   username: "",
   roles: []
-}
+};
 
 const AUTH_LOGIN = "AUTH_LOGIN";
 const AUTH_LOGOUT = "AUTH_LOGOUT";
@@ -19,15 +19,15 @@ const reducer = (state, action) => {
         isAdmin: action.payload.roles.includes("admin"),
         username: action.payload.username,
         roles: action.payload.roles
-      }
+      };
     case AUTH_LOGOUT:
-      return initialState
+      return initialState;
     default:
       return state;
   }
-}
+};
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
   const [auth, dispatch] = useReducer(reducer, initialState);
 
   const login = ({ username, roles }) => {
@@ -38,19 +38,15 @@ export const AuthProvider = ({children}) => {
         username: username,
         roles: roles
       }
-    })
-  }
+    });
+  };
 
   const logout = () => {
     dispatch({
       type: AUTH_LOGOUT
-    })
-  }
+    });
+  };
 
-  const value = {auth, login, logout};
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  )
-}
+  const value = { auth, login, logout };
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};

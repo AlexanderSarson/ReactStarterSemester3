@@ -1,10 +1,5 @@
-import React, { useState, useContext } from 'react';
-import {
-  Switch,
-  Route,
-  useHistory,
-  Redirect
-} from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Switch, Route, useHistory, Redirect } from "react-router-dom";
 import Modal from "./components/Modal";
 import LogIn from "./components/Login";
 import NoMatch from "./components/NoMatch";
@@ -16,14 +11,17 @@ import { AuthContext } from "./contexts/AuthContext";
 import Header from "./components/Header";
 
 function App() {
-  const { auth: { isAdmin, isLoggedIn } } = useContext(AuthContext);
+  const {
+    auth: { isAdmin, isLoggedIn }
+  } = useContext(AuthContext);
   const [showModalLogin, setShowModalLogin] = useState(false);
   const toggleModalLogin = () => setShowModalLogin(!showModalLogin);
   let history = useHistory();
 
   return (
     <div>
-      <Header loginMsg={isLoggedIn ? "Logout" : "Login"}
+      <Header
+        loginMsg={isLoggedIn ? "Logout" : "Login"}
         toggleModal={toggleModalLogin}
       />
       <hr />
@@ -32,7 +30,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/jokes" >
+          <Route path="/jokes">
             {isLoggedIn ? <Jokes /> : <Redirect to="/login-out" />}
           </Route>
           <Route path="/scrape">
@@ -42,15 +40,17 @@ function App() {
             <Content3 />
           </Route>
           <Route path="/login-out">
-            {showModalLogin ? (<Modal toggleModalLogin={toggleModalLogin}>
-              <LogIn
-                loginMsg={isLoggedIn ? "Logout" : "Login"}
-                toggleModalLogin={toggleModalLogin}
-                history={history}
-              />
-            </Modal>) : null}
+            {showModalLogin ? (
+              <Modal toggleModalLogin={toggleModalLogin}>
+                <LogIn
+                  loginMsg={isLoggedIn ? "Logout" : "Login"}
+                  toggleModalLogin={toggleModalLogin}
+                  history={history}
+                />
+              </Modal>
+            ) : null}
           </Route>
-          <Route >
+          <Route>
             <NoMatch />
           </Route>
         </Switch>

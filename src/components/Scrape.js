@@ -4,11 +4,10 @@ import facade from "../api/apiFacade";
 export default function Scrape() {
   const [scrapes, setScrapes] = useState([]);
   useEffect(() => {
-    facade.fetchData("/api/scrape")
-      .then(json => {
-        setScrapes(json);
-      })
-  }, [])
+    facade.fetchData("/api/scrape").then(json => {
+      setScrapes(json);
+    });
+  }, []);
   return (
     <React.Fragment>
       <h1>Scrapes</h1>
@@ -22,5 +21,5 @@ export default function Scrape() {
         </div>
       ))}
     </React.Fragment>
-  )
+  );
 }

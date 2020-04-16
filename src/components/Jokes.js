@@ -4,11 +4,10 @@ import facade from "../api/apiFacade";
 export default function Jokes() {
   const [jokes, setJokes] = useState({});
   useEffect(() => {
-    facade.fetchData("/api/jokes")
-      .then(json => {
-        setJokes(json);
-      })
-  }, [])
+    facade.fetchData("/api/jokes").then(json => {
+      setJokes(json);
+    });
+  }, []);
   return (
     <React.Fragment>
       <h1>Jokes</h1>
@@ -18,5 +17,5 @@ export default function Jokes() {
       <p>Joke2: {jokes.joke2}</p>
       <p>Joke2 Reference: {jokes.joke2Reference}</p>
     </React.Fragment>
-  )
+  );
 }

@@ -15,9 +15,9 @@ const Modal = ({ children, toggleModalLogin }) => {
     }
     document.addEventListener("keydown", keyListener);
     return () => modalRoot.removeChild(containerDiv);
-  }, [containerDiv, toggleModalLogin])
+  }, [containerDiv, toggleModalLogin]);
 
   return createPortal(children, containerDiv);
-}
+};
 
 export default Modal;

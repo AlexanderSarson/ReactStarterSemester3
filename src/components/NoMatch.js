@@ -1,7 +1,5 @@
-import React from 'react';
+import React from "react";
 
 export default function NoMatch() {
-  return (
-    <h1>No pages matches this path</h1>
-  )
+  return <h1>No pages matches this path</h1>;
 }
