@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { StateContext } from "../contexts/StateContext";
 
 export default function Content3() {
-  const emptyObject = { name: "", age: 0, email: "" };
+  const emptyObject = { name: "", age: "", email: "" };
   const [object, setObject] = useState(emptyObject);
   const {
     stateObjects,
@@ -20,6 +20,7 @@ export default function Content3() {
 
   const handleSubmit = () => {
     addState(object);
+    setObject(emptyObject);
   };
 
   const handleRemove = id => {
@@ -37,21 +38,22 @@ export default function Content3() {
         Redo
       </button>
       <form>
-        <label>name</label>
+        <label htmlFor="name">name</label>
         <input
           id="name"
           type="text"
           value={object.name}
           onChange={handleChange}
+          data-testid="name"
         />
-        <label>age</label>
+        <label htmlFor="age">age</label>
         <input
           id="age"
-          type="Number"
+          type="text"
           value={object.age}
           onChange={handleChange}
         />
-        <label>email</label>
+        <label htmlFor="email">email</label>
         <input
           id="email"
           type="text"
@@ -62,12 +64,13 @@ export default function Content3() {
         <button onClick={handleSubmit}>Add</button>
       </form>
       <ul>
-        {stateObjects.map((obj, index) => (
+        {stateObjects.map(obj => (
           <React.Fragment key={obj.id}>
             <li>
               name: {obj.name}, age: {obj.age}, email:{obj.email}
             </li>
             <button
+              data-testid={obj.email}
               onClick={() => {
                 handleRemove(obj.id);
               }}
