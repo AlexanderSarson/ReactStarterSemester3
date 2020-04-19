@@ -19,6 +19,8 @@ describe("Advanced state management", () => {
     cy.url().should("include", "/content3");
   });
   it("Add Users", () => {
+    cy.visit("http://localhost:3000");
+    cy.findByText("Content 3").click();
     cy.findByTestId("name").type("testname");
     cy.findByLabelText("age").type("30");
     cy.findByLabelText("email").type("test@example.com");
