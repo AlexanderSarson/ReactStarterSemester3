@@ -16,4 +16,4 @@ cache:
 install:
   - npm ci
 script:
-  - $(npm bin)/cypress run --record
+  - $(npm bin)/cypress run --record --key dc86fe7b-24b5-40da-b8b6-e3dcc55304ae
