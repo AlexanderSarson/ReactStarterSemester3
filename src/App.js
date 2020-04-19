@@ -17,7 +17,6 @@ function App() {
   const [showModalLogin, setShowModalLogin] = useState(false);
   const toggleModalLogin = () => setShowModalLogin(!showModalLogin);
   let history = useHistory();
-
   return (
     <div>
       <Header
